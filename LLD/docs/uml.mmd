@@ -1,0 +1,24 @@
+classDiagram
+class ParkingLot
+class ParkingFloor
+class ParkingSlot
+class Vehicle
+class Bike
+class Car
+class Truck
+class Ticket
+class FeeStrategy
+class SlotAllocationStrategy
+ParkingLot "1" o-- "many" ParkingFloor
+ParkingFloor "1" o-- "many" ParkingSlot
+ParkingSlot --> VehicleType
+Vehicle <|-- Bike
+Vehicle <|-- Car
+Vehicle <|-- Truck
+ParkingLot --> Ticket
+Ticket --> Vehicle
+Ticket --> ParkingSlot
+ParkingLot --> FeeStrategy
+ParkingLot --> SlotAllocationStrategy
+class FeeStrategy { <<interface>> calculate(Ticket, Instant) }
+class SlotAllocationStrategy { <<interface>> choose(List, VehicleType) }
